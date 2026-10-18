@@ -1,3 +1,11 @@
+# Proton-CachyOS-TUN（个人实验 fork）
+
+在固定 Proton-CachyOS 基线上引入 WE-Proton 的五个网络补丁，目标是为隔离网络命名空间中的 Windows 加速器提供 TUN 支持。**不是 CachyOS 官方发行版；当前仅完成源码应用检查，尚未证明编译或实机可用。**
+
+请先阅读 [中文说明、固定基线与验证边界](docs/TUN.md)。补丁在 Wine 构建副本同步后、autoreconf 前应用；原 Wine gitlink 和其他组件保持不变。
+
+以下保留上游说明。
+
 Introduction
 ------------
 

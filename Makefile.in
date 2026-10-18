@@ -1027,9 +1027,12 @@ $(eval $(call rules-autoconf,wine,i386,unix))
 $(eval $(call rules-autoconf,wine,x86_64,unix))
 $(eval $(call rules-autoconf,wine,aarch64,unix))
 
-$(WINE_SRC)/configure: $(WINE_ORIGIN)/aclocal.m4
+# A changed post-source stamp must regenerate configure: the TUN series changes configure.ac.
+$(WINE_SRC)/configure: $(WINE_ORIGIN)/aclocal.m4 $(OBJ)/.wine-post-source
 
-$(OBJ)/.wine-post-source: patches-source
+TUN_PATCH_INPUTS := $(wildcard $(SRCDIR)/patches/wine-tun/*.patch) $(SRCDIR)/patches/wine-tun/manifest.json $(SRCDIR)/tools/tun/apply.py
+$(OBJ)/.wine-post-source: patches-source $(TUN_PATCH_INPUTS)
+	python3 "$(SRCDIR)/tools/tun/apply.py" --source "$(WINE_SRC)" --origin "$(WINE_ORIGIN)"
 	$(foreach p,$(shell find $(PATCHES_SRC)/wine/ -name "*.patch" | sort),patch -d $(WINE_SRC) -Np1 -i $(p) &&) true
 	cd $(WINE_SRC) && XDG_CACHE_HOME=$(OBJ) dlls/winevulkan/make_vulkan -x vk.xml -X video.xml
 	-cd $(WINE_SRC) && tools/make_specfiles

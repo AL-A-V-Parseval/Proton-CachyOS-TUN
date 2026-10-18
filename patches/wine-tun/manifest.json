@@ -1,0 +1,111 @@
+{
+  "schema": 1,
+  "proton_base": "4b3d2918bd8d6880451f012bf2ced4e337447083",
+  "wine_base": "6a7adb2adf750046ad01091b369ea95c8b551a30",
+  "we_base": "8cfdd8c45c6d6c2d92ecd8f118fb03e0a28b08a7",
+  "patches": [
+    {
+      "name": "0015-iphlpapi-Implement-setting-interfaces-unicast-addres.patch",
+      "sha256": "d2d69424a020175addda213840b7ff514d0d59c0adb7298f8a9e6d975538681f",
+      "source_url": "https://github.com/SHORiN-KiWATA/we-proton/blob/8cfdd8c45c6d6c2d92ecd8f118fb03e0a28b08a7/patches/wine/0015-iphlpapi-Implement-setting-interfaces-unicast-addres.patch"
+    },
+    {
+      "name": "0016-wintun-Implement-the-Wintun-userspace-tunnel-driver-.patch",
+      "sha256": "3b6b85bd2b71d5ebb49d7431dc3c11646110c3aaac016df873addf30199a44d4",
+      "source_url": "https://github.com/SHORiN-KiWATA/we-proton/blob/8cfdd8c45c6d6c2d92ecd8f118fb03e0a28b08a7/patches/wine/0016-wintun-Implement-the-Wintun-userspace-tunnel-driver-.patch"
+    },
+    {
+      "name": "0017-ntdll-Make-IP_UNICAST_IF-work-for-TCP-sockets-as-wel.patch",
+      "sha256": "da8074a986ec3ddc521bed01298ba242b442297a0b3e41565e67497494004e39",
+      "source_url": "https://github.com/SHORiN-KiWATA/we-proton/blob/8cfdd8c45c6d6c2d92ecd8f118fb03e0a28b08a7/patches/wine/0017-ntdll-Make-IP_UNICAST_IF-work-for-TCP-sockets-as-wel.patch"
+    },
+    {
+      "name": "0048-wintun-Report-the-adapter-description-Windows-prog.patch",
+      "sha256": "c35e35283326f0790007e95fb7e5732596aaddaacda512c232cfc19868647b0e",
+      "source_url": "https://github.com/SHORiN-KiWATA/we-proton/blob/8cfdd8c45c6d6c2d92ecd8f118fb03e0a28b08a7/patches/wine/0048-wintun-Report-the-adapter-description-Windows-prog.patch"
+    },
+    {
+      "name": "0053-iphlpapi-Implement-CreateIpForwardEntry-SetIpForward.patch",
+      "sha256": "3962d5eba4b317533d327098c4d60a38e8f6757ad5d8f994a9029bceb039da09",
+      "source_url": "https://github.com/SHORiN-KiWATA/we-proton/blob/8cfdd8c45c6d6c2d92ecd8f118fb03e0a28b08a7/patches/wine/0053-iphlpapi-Implement-CreateIpForwardEntry-SetIpForward.patch"
+    }
+  ],
+  "files": {
+    "configure.ac": {
+      "base_sha256": "a04426f2d9f7e798009d96e8e53e383234f0bfcb747fa888dc0b2fb07edcf46b",
+      "patched_sha256": "669af5d27a9fff3106b7a1240a63c62793c99242d35b6b4de4444d1e4ee111de"
+    },
+    "dlls/iphlpapi/iphlpapi.spec": {
+      "base_sha256": "9dd8d2476bbd4e5d5512906f75a0c1c4fe30e90b854623c3a6d01831bb449bc4",
+      "patched_sha256": "99116c1fc6bd9fdb41743170906736f114a6f0a27eea0771ea928639f9082812"
+    },
+    "dlls/iphlpapi/iphlpapi_main.c": {
+      "base_sha256": "779051c1dad14479a7939f851b2a5c2722d50ec7b7b966d6eb44e603f39d233e",
+      "patched_sha256": "0d6909205a4654fa6c0aa5d428d91347cf78890ddca3eab565254947f596d256"
+    },
+    "dlls/nsi/nsi.c": {
+      "base_sha256": "02d0320e4bcdadfa9263b04a3c6d8bce76e6be43e1ef7dd7eeba16af43816213",
+      "patched_sha256": "c5065c5ff9ba0c555f2042e1186d06e500d43eaa179d0b21e7deedbc4c0cd9b1"
+    },
+    "dlls/nsi/nsi.spec": {
+      "base_sha256": "66b614d3c2638255bb3803e7ba2a572f253d172238b634085bf6a04ad9ff1ba4",
+      "patched_sha256": "3ff01efef5cc0ad762d447904bb5a138f2c388f88ff34eb2ae788cb9040b605a"
+    },
+    "dlls/nsiproxy.sys/device.c": {
+      "base_sha256": "29db71781def3e503fd15e970e7ea9b5ae614ca0835530f2ec74077bb9dfbdff",
+      "patched_sha256": "34ced55f284c2e799a316691a2cc45a442c7cbdefcc0ce8c28078250ddc6a25b"
+    },
+    "dlls/nsiproxy.sys/ip.c": {
+      "base_sha256": "5196d91b378d14fa47361690718ac744ff43b4bfe50328046e5e52510d16a0f6",
+      "patched_sha256": "ba8f5443db1ee18f865fa63497d47c9352af29057b373f8aa088b642bc124941"
+    },
+    "dlls/nsiproxy.sys/ndis.c": {
+      "base_sha256": "0872d9d93010244b85202b79f8d8c26c6a896f4fe48bcd682b1c179b2232732e",
+      "patched_sha256": "993d50d596bdb022ab92f6a5c7f622d3315bbd6a08d94f5c03cbb65eeb348fcd"
+    },
+    "dlls/nsiproxy.sys/nsi.c": {
+      "base_sha256": "e45ff6e9c22f129032fe1f27d72e0d402c419db4ba49a26b0e8f55c545df2de5",
+      "patched_sha256": "3396a88ddb644801590425c747d6a067e942329848e2749cd486931d80179cd0"
+    },
+    "dlls/nsiproxy.sys/unix_private.h": {
+      "base_sha256": "20c53a71b33f52962fe39afb1809776645dbb8e9ac06aea6031d35e79c41613d",
+      "patched_sha256": "6c341c44b7a79d4630d0f785229e3704445baef57c1dd5ccd146dbb28dd4717e"
+    },
+    "dlls/ntdll/unix/socket.c": {
+      "base_sha256": "311f0ca42d7e4ccac41c8f842b62f36aef50af76de87781410010ab1303beb73",
+      "patched_sha256": "6e706116be6f1804744deeed6573a2103eb674f3b1d4a57e551be38b0018215e"
+    },
+    "dlls/wintun/Makefile.in": {
+      "base_sha256": null,
+      "patched_sha256": "dc983e68eac5be5a304d097d55e9a99cba617f451388d64e9076c9e94346dfe1"
+    },
+    "dlls/wintun/unixlib.c": {
+      "base_sha256": null,
+      "patched_sha256": "543caf4b86728edebd077ddf5fe8c9591abce614e0e80543b10efc07f03d1e13"
+    },
+    "dlls/wintun/unixlib.h": {
+      "base_sha256": null,
+      "patched_sha256": "a370016fdb5af9807c81509d27db6b5980158feab0f47743be1d0b75784b1631"
+    },
+    "dlls/wintun/wintun.c": {
+      "base_sha256": null,
+      "patched_sha256": "f7c77eb84d301b7f7389340c417706f91a41aa5ad9136da566134137789ba0f5"
+    },
+    "dlls/wintun/wintun.h": {
+      "base_sha256": null,
+      "patched_sha256": "d5391b947d08fb0e1bd9072b76ead79da9050d82011ad6c13a41776ae9bed4e1"
+    },
+    "dlls/wintun/wintun.spec": {
+      "base_sha256": null,
+      "patched_sha256": "b9e231b1044c406b06e01707e668abe1d094b0f03c05f30a39e36400b3796055"
+    },
+    "include/netioapi.h": {
+      "base_sha256": "b23f3cb6de6fbaaaa9b826086354445a710e384437f29810e5e87a43f8d3be77",
+      "patched_sha256": "f4a5d27c7ca4d9bcc9baa2bc77cd4386b4d517f8852678e292ef187f60ef140e"
+    },
+    "include/wine/nsi.h": {
+      "base_sha256": "d4ba16f609553d2a71349b1ff3a0e52d7db2f3f218f03a4730fdb8fc507846ee",
+      "patched_sha256": "de7b51b2e7c0f747f13b756170d7fcf1ed63435db9bc9233def507760809e955"
+    }
+  }
+}

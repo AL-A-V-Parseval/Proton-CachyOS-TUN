@@ -1,0 +1,34 @@
+name: TUN patch source checks
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'tools/tun/**'
+      - 'patches/wine-tun/**'
+      - 'Makefile.in'
+      - '.github/workflows/tun-patches.yml'
+  pull_request:
+    paths:
+      - 'tools/tun/**'
+      - 'patches/wine-tun/**'
+      - 'Makefile.in'
+      - '.github/workflows/tun-patches.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  source-checks:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Failure-mode unit tests (offline)
+        run: python3 -m unittest discover -s tools/tun -p 'test_*.py' -v
+      - name: Verify pinned upstream files and ordered patch series
+        run: python3 tools/tun/verify.py

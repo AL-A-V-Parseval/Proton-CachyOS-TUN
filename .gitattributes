@@ -1,2 +1,5 @@
 *.sc linguist-detectable=false
 *.SC linguist-detectable=false
+
+# Preserve vendored patch bytes, including required blank context prefixes.
+patches/wine-tun/*.patch -text -whitespace
