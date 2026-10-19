@@ -1,0 +1,35 @@
+name: Build Proton-CachyOS-TUN x86_64
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tun-build-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify-source:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test patch safeguards
+        run: python3 -m unittest discover -s tools/tun -p 'test_*.py' -v
+      - name: Verify ordered series against pinned upstream files
+        run: python3 tools/tun/verify.py
+
+  build:
+    needs: verify-source
+    uses: ./.github/workflows/_job_build.yml
+    with:
+      name: Proton-CachyOS-TUN-11.0-20261014-x86_64
+      cflags: -O3 -march=nocona -mtune=core-avx2
+      rustflags: -Copt-level=3 -Ctarget-cpu=nocona
+      continue: false
