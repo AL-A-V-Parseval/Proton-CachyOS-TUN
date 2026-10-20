@@ -1,0 +1,160 @@
+name: Compatibility Report
+description: Report a game compatibility issue with Proton-CachyOS.
+title: "[Compat]: "
+labels: ["compatibility"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please fill out this form as completely as possible. Incomplete reports are harder to act on.
+
+        > Only report issues that happen with Proton-CachyOS and NOT Proton or Proton Experimetnal.
+        > Issues happening with Proton and Proton Experimental should be reported to Valve directly.
+        > The exception is for issues that concern customizations specific to this custom Proton that do not exist in the official one.
+
+        > You can find the Steam AppID in the URL of the store page (e.g. for *The Witcher 3* the AppID is `292030`).
+        > Full system information is available in Steam under **Help → System Information**. Copy it to a [Gist](https://gist.github.com/) and paste the link below.
+
+  - type: input
+    id: game_name
+    attributes:
+      label: Game name
+      description: The full name of the game experiencing the compatibility issue.
+      placeholder: "e.g. The Witcher 3: Wild Hunt"
+    validations:
+      required: true
+
+  - type: input
+    id: appid
+    attributes:
+      label: Steam AppID
+      description: The numeric Steam AppID of the game.
+      placeholder: e.g. 292030
+    validations:
+      required: true
+
+  - type: input
+    id: proton_version
+    attributes:
+      label: Proton-CachyOS version
+      description: Which version of Proton-CachyOS are you using?
+      placeholder: e.g. 10.0-1
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: "## System Information"
+
+  - type: input
+    id: gpu
+    attributes:
+      label: GPU
+      placeholder: e.g. RX 7900 XTX or RTX 4090
+    validations:
+      required: true
+
+  - type: input
+    id: driver_version
+    attributes:
+      label: Video driver version
+      placeholder: e.g. Mesa 25.0 or nvidia 570.86.16
+    validations:
+      required: true
+
+  - type: input
+    id: kernel_version
+    attributes:
+      label: Kernel version
+      placeholder: e.g. 6.13.4-2-cachyos
+    validations:
+      required: true
+
+  - type: input
+    id: system_info
+    attributes:
+      label: Full system information report
+      description: |
+        Paste the Steam system info (**Help → System Information**) and **Help → Steam Runtime Diagnostics** into a [Gist](https://gist.github.com/) and link it here.
+      placeholder: https://gist.github.com/...
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: "## Confirmations"
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Please confirm the following before submitting
+      options:
+        - label: I haven't found an existing compatibility report for this game.
+          required: true
+        - label: I have checked whether there are updates for my system available.
+          required: true
+        - label: I have verified the issue is present when using [Proton-CachyOS-SLR](https://github.com/CachyOS/proton-cachyos/releases) from this repository.
+          required: true
+        - label: I haven't encountered this issue using an official Proton release (Proton, Proton Experimental, or Proton Bleeding Edge).
+          required: true
+        - label: I have verified that the issue happens after I **DISABLED** and **REMOVED** all options and configuration that is **NOT RELEVANT** to my issue (MangoHud, winewayland, pipewire etc)
+          required: true
+
+  - type: textarea
+    id: symptoms
+    attributes:
+      label: Symptoms
+      description: |
+        What is the problem? Describe what you see, hear, or experience.
+        Make sure you test **WITHOUT ANY CONFIGURATION** that is not directly affecting your issue.
+        Issues that fail to do this will be closed immediately.
+        You are expected to perform some basic debugging and testing to identify what configuration might be causing your issues.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: How can we reproduce the issue?
+      placeholder: |
+        1. Launch the game via Steam with Proton-CachyOS selected
+        2. Start a new game / load a save
+        3. See error / crash
+    validations:
+      required: true
+
+  - type: upload
+    id: log_slr
+    attributes:
+      label: Log from Proton-CachyOS-SLR
+      description: |
+        Add `PROTON_LOG=1 %command%` to the game's launch options and attach the generated `$HOME/steam-$APPID.log` file.
+        For video/audio issues use `PROTON_LOG="+mfplat,+quartz,+wmvcore,+wmadec,+dmo" %command%` instead.
+        Logs compress well if needed.
+    validations:
+      required: true
+
+  - type: upload
+    id: log_proton_exp
+    attributes:
+      label: Log from recent Proton Experimental
+      description: |
+        Helps identify whether the issue is specific to Proton-CachyOS or upstream.
+        Add `PROTON_LOG=1 %command%` to the game's launch options and attach the generated log.
+    validations:
+      required: true
+
+  - type: upload
+    id: log_native
+    attributes:
+      label: Log from Proton-CachyOS Native (if relevant)
+      description: |
+        Only include if the issue was first noticed in the native (non-SLR) version.
+        Add `PROTON_LOG=1 %command%` to the game's launch options and attach the generated log.
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Any other relevant information, workarounds tried, related issues, etc.

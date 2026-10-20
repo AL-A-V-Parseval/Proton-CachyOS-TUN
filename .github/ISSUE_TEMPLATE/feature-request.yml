@@ -1,0 +1,45 @@
+name: Feature Request
+description: Suggest an idea or improvement for Proton-CachyOS.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please fill out this form as completely as possible. Feature requests with clear justification are more likely to be acted on.
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Please confirm the following before submitting
+      options:
+        - label: I haven't found another open request for this feature.
+          required: true
+        - label: I have checked whether a system update already provides this feature.
+          required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What do you want to be added or changed?
+    validations:
+      required: true
+
+  - type: textarea
+    id: justification
+    attributes:
+      label: Justification
+      description: Why should this be integrated into Proton-CachyOS rather than upstream Wine or Proton?
+
+  - type: textarea
+    id: risks
+    attributes:
+      label: Risks
+      description: Are there any potential downsides, regressions, or compatibility concerns?
+
+  - type: textarea
+    id: references
+    attributes:
+      label: References
+      description: Links to related issues, upstream patches, PRs, or other relevant resources.
